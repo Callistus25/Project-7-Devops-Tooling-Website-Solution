@@ -31,3 +31,18 @@ sudo systemctl status nfs-server.service
 
 - Export the mounts for webservers’ `subnet cidr` to connect as clients. For simplicity, you will install your all three Web Servers inside the same subnet, but in production set up you would probably want to separate each tier inside its own subnet for higher level of security.
 To check your `subnet cidr` – open your EC2 details in AWS web console and locate ‘Networking’ tab and open a Subnet link:
+
+- Make sure  permission is setup that will allow the Web servers to read, write and execute files on NFS.
+```
+sudo chown -R nobody: /mnt/apps
+sudo chown -R nobody: /mnt/logs
+sudo chown -R nobody: /mnt/opt
+
+sudo chmod -R 777 /mnt/apps
+sudo chmod -R 777 /mnt/logs
+sudo chmod -R 777 /mnt/opt
+
+sudo systemctl restart nfs-server.service
+```
+
+- Configure access to NFS for clients within the same subnet (example of Subnet CIDR – 172.31.32.0/20 ):
