@@ -9,8 +9,14 @@ Task : Develop Tooling wbesite Solution
 ### STEP 1 – PREPARE NFS SERVER ###
 
 - Spin up a new EC2 instance with RHEL Linux 8 Operating System.
+![alt](./Images/Capture.JPG)
 
 - Configure LVM on the Server. Instead of formating the disks as `ext4` you will have to format them as `xfs`. Ensure there are 3 Logical Volumes. `lv-opt`, `lv-apps`, and `lv-logs`.
+![alt](./Images/3%20Volumes%20creation.JPG)
+
+![alt](./Images/Attaching%20volumes.JPG)
+
+
 
 Create mount points on /mnt directory for the logical volumes as follow:
 
